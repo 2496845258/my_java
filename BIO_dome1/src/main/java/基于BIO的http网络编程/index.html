@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>异步请求</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <!--    <script src="http://luzhao.top:8080/test/javascript/MyUtil-0.0.1.js"></script>-->
+    <style>
+        div {
+            width: 300px;
+            height: 200px;
+            background-color: #6ABB78;
+            line-height: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="hh">点我发送ajax请求</div>
+<script>
+    $('.hh').click( function () {
+        //请求对象
+        var xhttp = new XMLHttpRequest()
+
+        xhttp.onreadystatechange = function () {
+            //判断响应状态码
+            if ( this.status == 200 ) {
+                $('.hh').html(this.responseText)
+            }
+        }
+        xhttp.open('GET', 'http://127.0.0.1:8891/hello', false)
+        //发送消息
+        xhttp.send();
+    })
+</script>
+</body>
+</html>
